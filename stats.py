@@ -20,6 +20,18 @@ def highest(scores):
     return max(scores)
 
 
+def pass_rate(scores, line=60):
+    """返回及格率，单位为百分比。
+
+    及格线含 line 本身；scores 为空时返回 0.0。
+    """
+    if not scores:
+        return 0.0
+    passed = [s for s in scores if s >= line]
+    return len(passed) / len(scores) * 100
+
+
+
 if __name__ == "__main__":
     sample = [85, 92, 78, 60, 95]
     print("成绩：", sample)

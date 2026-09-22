@@ -2,7 +2,7 @@
 
 import unittest
 
-from stats import average, highest, total
+from stats import average, highest, pass_rate, total
 
 
 class TestStats(unittest.TestCase):
@@ -15,6 +15,15 @@ class TestStats(unittest.TestCase):
     def test_highest(self):
         self.assertEqual(highest([80, 90, 70]), 90)
 
+    def test_pass_rate(self):
+        self.assertEqual(pass_rate([60, 90]), 100.0)
+
+    def test_pass_rate_boundary(self):
+        # 60 分算及格
+        self.assertEqual(pass_rate([60, 59]), 50.0)
+
+    def test_pass_rate_empty(self):
+        self.assertEqual(pass_rate([]), 0.0)
 
 if __name__ == "__main__":
     unittest.main()
